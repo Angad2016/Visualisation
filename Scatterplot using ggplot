@@ -1,0 +1,18 @@
+housingUS <- read.csv(file="housingUS.csv")
+names(housingUS)
+
+head(housingUS)
+
+housingUS$Home.Value <- gsub('$', '', housingUS$Home.Value, fixed = TRUE)
+housingUS$Home.Value <- as.numeric(gsub(',', '', housingUS$Home.Value, fixed = TRUE))
+
+housingUS$Structure.Cost <- gsub('$', '', housingUS$Structure.Cost, fixed = TRUE)
+housingUS$Structure.Cost <- as.numeric(gsub(',', '', housingUS$Structure.Cost, fixed = TRUE))
+
+ggplot(subset(housingUS, STATE %in% c("MA", "TX")),
+       aes(x=Date,
+           y=Home.Value,
+           color=STATE))+
+  geom_point()
+  
+  
