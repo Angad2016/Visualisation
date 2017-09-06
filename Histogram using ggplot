@@ -1,0 +1,13 @@
+housingUS <- read.csv(file="housingUS.csv")
+names(housingUS)
+
+head(housingUS)
+
+housingUS$Home.Value <- gsub('$', '', housingUS$Home.Value, fixed = TRUE)
+housingUS$Home.Value <- as.numeric(gsub(',', '', housingUS$Home.Value, fixed = TRUE))
+
+housingUS$Structure.Cost <- gsub('$', '', housingUS$Structure.Cost, fixed = TRUE)
+housingUS$Structure.Cost <- as.numeric(gsub(',', '', housingUS$Structure.Cost, fixed = TRUE))
+
+ggplot(housingUS, aes(x = Home.Value)) +
+  geom_histogram()
