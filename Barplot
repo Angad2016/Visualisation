@@ -1,0 +1,40 @@
+setwd("C:\\Ram\\General 20150804 v1\\Trainings\\R Programming for Data Science\\data")
+
+prd_spend <- read.csv(file = "prod_spend.csv")
+
+
+names(prd_spend)
+# Avg Balance by Product
+avg.spend.prd <- aggregate(prd_spend$Spend_Value,
+                           by=list(prd_spend$Prod_Code),
+                           mean)
+names(avg.spend.prd)
+names(avg.spend.prd) <-c("Product","Avg.Spend")
+
+barplot(height=avg.spend.prd$Avg.Spend,
+        names.arg = avg.spend.prd$Product,        
+        xlab="$ Spend",
+        ylab="Product",
+        main="Spend by Product",
+        col="blue",
+        border="white",
+        horiz=T)
+box()
+
+?barplot
+
+movies_data <- read.table("movies.tab", sep="\t", header=TRUE, quote="", comment="")
+
+library(sqldf)
+yearwise_anime<-sqldf("select year, count(*) as Num_movies 
+                      from movies_data where Animation=1
+                      group by year")
+sum(movies_data$Animation)
+
+sum(yearwise_anime$Num_movies)
+barplot(height=yearwise_anime$Num_movies,
+        col='deeppink4',
+        names.arg=yearwise_anime$year,
+        xlab="year",
+        ylab="Count of Movies",
+        main="Count of Movies across years")
