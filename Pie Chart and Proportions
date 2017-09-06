@@ -1,0 +1,38 @@
+
+Label <- c("0-20","20-30","30-40","40-50","50-60")
+Count <- c(16,395,315,161,68)
+age <- data.frame(Label,Count)
+
+
+pie(age$Count)
+
+
+pie(age$Count,
+    label=age$Label,
+    radius=1,
+    main="Customers by Age Group",
+    col=c("red","blue","orange","green","black"),
+    border="white",
+    clockwise=T
+)
+
+Count.pct <- c(16,395,315,161,68)/sum(Count)
+Count.pct.label = as.integer(Count.pct*100)
+pie(Count.pct,
+    label=Count.pct.label,
+    radius=1,
+    main="Customers by Age Group",
+    col=c("red","blue","orange","green","black"),
+    border="white",
+    clockwise=T
+)
+
+
+install.packages("plotrix")
+library(plotrix)
+slices <- c(10, 12, 4, 16, 8)
+lbls <- c("US", "UK", "Australia", "Germany", "France")
+pie3D(slices,
+      labels=lbls,
+      explode=0.1,
+      main="Pie Chart of Countries ")
