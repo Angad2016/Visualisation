@@ -1,0 +1,20 @@
+# Generate Age data
+## Generate a numeric vector for Age
+Age <- as.integer(rnorm(10000,m=55, sd=15))
+# histogram
+hist(Age)
+?hist 
+hist(Age, breaks=50)
+
+Age <- as.integer(rnorm(10000,m=55, sd=15))
+hist(Age)
+hist(Age, breaks=50)
+
+
+hist(Age, 
+     breaks=30,
+     col="green",
+     border="white", 
+     xlab="Age", 
+     ylab="Counts", 
+     main="Histogram:Age")
