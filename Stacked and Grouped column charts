@@ -1,0 +1,16 @@
+library(help=datasets)
+head(mtcars)
+# Stacked
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, 
+        main="Car Distribution by Gears and V/S",
+        xlab="Number of Gears", 
+        col=c("darkblue","red"),
+        legend = rownames(counts))
+
+counts <- table(mtcars$vs, mtcars$gear)
+barplot(counts, main="Car Distribution by Gears and V/S",
+        xlab="Number of Gears",
+        col=c("darkblue","red"),
+        legend = rownames(counts),
+        beside=TRUE)
